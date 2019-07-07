@@ -12,7 +12,7 @@
 
 #ifndef STASSID
 #define STASSID "paules (2.4Ghz)"
-#define STAPSK  "***REMOVED***"
+#define STAPSK  ""
 #endif
 
 // #define I2C_TILT = 0x53
