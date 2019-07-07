@@ -9,3 +9,6 @@ eg
 
 pio init --ide clion
 
+To update your device (if OTA enabled)
+
+platformio run -t upload --upload-port <ip>
