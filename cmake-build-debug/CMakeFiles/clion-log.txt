@@ -1,4 +1,0 @@
-C:\Users\paul\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\191.7479.33\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\git\meettrein
--- Configuring done
--- Generating done
--- Build files have been written to: D:/git/meettrein/cmake-build-debug

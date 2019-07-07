@@ -2,6 +2,6 @@
 .pioenvs
 .piolibdeps
 CMakeListsPrivate.txt
-cmake-build-debug
-.idea
+cmake-build-debug/
+.idea/
 **/WifiSettings.h
