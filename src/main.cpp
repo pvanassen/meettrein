@@ -8,14 +8,7 @@
 #include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
-
-
-#ifndef STASSID
-#define STASSID "paules (2.4Ghz)"
-#define STAPSK  ""
-#endif
-
-// #define I2C_TILT = 0x53
+#include "WifiSettings.h"
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
@@ -50,6 +43,7 @@ void setup() {
     display.setTextSize(1);      // Normal 1:1 pixel scale
     display.setTextColor(WHITE); // Draw white text
     display.setCursor(0, 0);     // Start at top-left corner
+    display.cp437(true);         // Use full 256 char 'Code Page 437' font
 
     // Clear the buffer
     display.clearDisplay();
@@ -103,17 +97,21 @@ void setup() {
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
 
+    display.println(F("Welcome! My IP address is: "));
+    display.println(WiFi.localIP());
+    display.display();
+
     /* Initialise the sensor */
     if(!accel.begin())
     {
         /* There was a problem detecting the ADXL345 ... check your connections */
-        Serial.println("Ooops, no ADXL345 detected ... Check your wiring!");
+        Serial.println(F("Ooops, no ADXL345 detected ... Check your wiring!"));
         while(1);
     }
 
     /* Set the range to whatever is appropriate for your project */
     accel.setRange(ADXL345_RANGE_2_G);
-
+    delay(3000);
     startup = false;
 }
 
@@ -124,7 +122,6 @@ void loop() {
     sensors_event_t event;
     accel.getEvent(&event);
 
-    display.cp437(true);         // Use full 256 char 'Code Page 437' font
     display.clearDisplay();
     display.setCursor(0, 0);
     display.print(F("X: "));
